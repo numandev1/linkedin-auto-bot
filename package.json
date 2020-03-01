@@ -1,0 +1,70 @@
+{
+	"name": "linkedin-auto-bot",
+	"version": "0.0.1",
+	"description": "An automation tool to automate the connection requests on LinkedIn",
+	"bin": {
+		"linkedin-bot": "lib/cli.js",
+		"lab": "lib/cli.js"
+	},
+	"scripts": {
+		"build": "babel src -d lib",
+		"start": "node src/cli.js -u muhammadnuman70@gmail.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nomi9995/linkedin-bot.git"
+	},
+	"keywords": [
+		"linkedin",
+		"connect",
+		"hack",
+		"invite",
+		"automation",
+		"script",
+		"node",
+		"javascript",
+		"auto",
+		"people",
+		"program",
+		"tool",
+		"automate",
+		"request",
+		"connection",
+		"node",
+		"nodejs",
+		"mac",
+		"windows",
+		"linux",
+		"ubuntu",
+		"unix",
+		"download",
+		"install",
+		"npm",
+		"console"
+	],
+	"author": "nomi9995 <muhammadnuman70@gmail.com> (https://nomi9995.io)",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/nomi9995/linkedin-bot/issues"
+	},
+	"homepage": "https://github.com/nomi9995/linkedin-bot#readme",
+	"dependencies": {
+		"axios": "^0.17.1",
+		"colors": "^1.1.2",
+		"commander": "^2.13.0",
+		"moment": "^2.20.1",
+		"prompt": "^1.0.0",
+		"word-wrap": "^1.2.3"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-preset-env": "^1.6.1",
+		"eslint": "^4.15.0",
+		"eslint-config-airbnb-base": "^12.1.0",
+		"eslint-plugin-import": "^2.8.0"
+	},
+	"engines": {
+		"node": ">=4.0.0"
+	}
+}
