@@ -17,9 +17,9 @@ function invite(sessionCookies, invitees) {
     (function func() {
       if (idx < invitees.length) {
         makeReqInvitationsPOST(sessionCookies, invitees[idx])
-          .then(() => {
-            func();
-          });
+         .then(() => {
+           func();
+         });
         idx++;
       } else {
         resolve();
@@ -64,14 +64,14 @@ function makeReqInvitationsPOST(cookies, invitee) {
 
       const statusCode = err.response.status;
       if (statusCode === 429) {
-        console.error(`${colors.red('error')}:   too many requests`);
-        process.exit();
+        // console.log(`${colors.red('error')}:   too many requests`);
+        process.exit(1);
+        throw Error("too many requests");
       }
     });
 }
 
 function printInvite(invitee, isSuccess, successCount, failedCount) {
-  if (!global.verbose) { return; }
   const isFirstCard = isFirstTime;
 
   if (isFirstCard) {
@@ -79,26 +79,25 @@ function printInvite(invitee, isSuccess, successCount, failedCount) {
     utils.print('\n');
     cursorRelYPos = printInviteCard(invitee, isSuccess, successCount, failedCount);
   } else {
-    readline.cursorTo(utils.currentPrintStream, 0);
-    readline.moveCursor(utils.currentPrintStream, 0, -cursorRelYPos);
-    readline.clearScreenDown(utils.currentPrintStream);
-    cursorRelYPos = printInviteCard(invitee, isSuccess, successCount, failedCount);
+      cursorRelYPos = printInviteCard(invitee, isSuccess, successCount, failedCount);
+  }
+  if(failedCount===1)
+  {
+    console.log("exit")
+    process.exit(1);
   }
 }
 
 function printInviteCard(invitee, isSuccess, successCount, failedCount) {
   let totNewLines = 0;
   const wrapTextWidth = utils.currentPrintStream.columns - 10;
-  const wrapOption = { width: wrapTextWidth, indent: '    ' };
+  const wrapOption = {width: wrapTextWidth, indent: '    '};
 
   const wrappedInvName = utils.wrapText(inviteeName(invitee), wrapOption);
   const wrappedInvOccupation = utils.wrapText(
-    utils.resolveNewLines(invitee.occupation),
-    wrapOption,
+   utils.resolveNewLines(invitee.occupation),
+   wrapOption,
   );
-
-  totNewLines += wrappedInvName.split('\n').length - 1;
-  totNewLines += wrappedInvOccupation.split('\n').length - 1;
 
   const invTitle = wrappedInvName.trim();
   const invOccupation = colors.grey(wrappedInvOccupation);
@@ -107,20 +106,8 @@ function printInviteCard(invitee, isSuccess, successCount, failedCount) {
   const failedCountMsg = `${colors.grey('Failed:')} ${colors.red(`${failedCount}`)}`;
   const elapsedTimeMsg = `${colors.grey('Elapsed:')} ${colors.cyan(utils.endTimer())}`;
 
-  utils.print(`  ${statusChar} `);
-  utils.print(invTitle);
-  utils.print('\n');
-  utils.print(invOccupation);
-  utils.print('\n\n\n');
-  utils.print('  ');
-  utils.print(`${successCountMsg}`);
-  utils.print('  ');
-  utils.print(`${failedCountMsg}`);
-  utils.print('  ');
-  utils.print(elapsedTimeMsg);
-  utils.print('\n\n  ');
+  utils.print(`${statusChar} | ${invTitle} | ${invOccupation} | ${successCountMsg} | ${failedCountMsg} | ${elapsedTimeMsg}`)
 
-  totNewLines += 6;
 
   return totNewLines;
 }

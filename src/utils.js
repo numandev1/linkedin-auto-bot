@@ -45,6 +45,7 @@ function fetchCookies(url, method, config) {
 }
 
 function trim(str, chr) {
+  str=str||"";
   const regex = new RegExp(`(?:^${escapeRegExp(chr)}+)|(?:${escapeRegExp(chr)}+$)`, 'g');
   return str.replace(regex, '');
 }
@@ -56,9 +57,7 @@ function escapeRegExp(str) {
 const currentPrintStream = process.stderr;
 
 function print(msg) {
-  if (global.verbose) {
-    currentPrintStream.write(msg);
-  }
+   console.log(msg)
 }
 
 function resolveNewLines(text) {
@@ -83,6 +82,18 @@ function endTimer() {
   return `${moment().diff(global.startMoment, 'second', true)}sec`;
 }
 
+function makeReqPYMKGET(cookies, {url, query = null}, header, responseType = 'json') {
+  const csrfToken = trim(cookies.JSESSIONID, '"');
+  const headers = {...header, cookie: stringifyCookies(cookies), 'csrf-token': csrfToken,};
+  const reqConfig = {
+    headers,
+    responseType: responseType,
+  };
+  if (query) reqConfig.params = query;
+  return axios.get(url, reqConfig)
+   .then(response => response.data)
+}
+
 module.exports = {
   fetchCookies,
   parseToCookieKeyValuePairs,
@@ -92,6 +103,7 @@ module.exports = {
   resolveNewLines,
   wrapText,
   currentPrintStream,
+  makeReqPYMKGET,
   startTimer,
   endTimer,
 };
