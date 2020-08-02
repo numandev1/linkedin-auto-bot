@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"description": "An automation tool to automate the connection requests on LinkedIn",
 	"bin": {
-		"linkedin-bot": "lib/cli.js",
+		"linkedin-auto-bot": "lib/cli.js",
 		"lab": "lib/cli.js"
 	},
 	"scripts": {
@@ -12,7 +12,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/nomi9995/linkedin-bot.git"
+		"url": "git+https://github.com/nomi9995/linkedin-auto-bot.git"
 	},
 	"keywords": [
 		"linkedin",
