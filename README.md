@@ -16,10 +16,10 @@ Just run it from your favorite terminal or command prompt and keep it running un
 Install this tool using `npm`:
 
 ```bash
-$ npm install -g linkedin-bot
+$ npm install -g linkedin-auto-bot
 ```
 
-It installs two binaries: `linkedin-bot` and `lac` to your system path.
+It installs two binaries: `linkedin-auto-bot` and `lac` to your system path.
 
 ## Usage
 
@@ -50,8 +50,8 @@ Please, try to follow:
 * Start the scraper.
 
 ```sh
-$ git clone https://github.com/nomi9995/linkedin-bot.git
-$ cd linkedin-bot
+$ git clone https://github.com/nomi9995/linkedin-auto-bot.git
+$ cd linkedin-auto-bot
 $ git checkout develop
 $ npm i
 $ npm run build
