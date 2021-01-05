@@ -49,7 +49,7 @@
 	},
 	"homepage": "https://github.com/nomi9995/linkedin-auto-bot#readme",
 	"dependencies": {
-		"axios": "^0.17.1",
+		"axios": "^0.21.1",
 		"colors": "^1.1.2",
 		"commander": "^2.13.0",
 		"moment": "^2.20.1",
