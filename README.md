@@ -19,11 +19,11 @@ Install this tool using `npm`:
 $ npm install -g linkedin-auto-bot
 ```
 
-It installs two binaries: `linkedin-auto-bot` and `lac` to your system path.
+It installs two binaries: `linkedin-auto-bot` and `lab` to your system path.
 
 ## Usage
 
-Use it as follows using `lac` command:
+Use it as follows using `lab` command:
 
 ```bash
 $ lab -u enter_your_linkedin_email> -k <keyword like Full Stack Developer>
